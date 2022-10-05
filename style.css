@@ -1,0 +1,40 @@
+main {
+    display: block;
+    margin: 3rem auto;
+    max-width: 90vw;
+    width: 50ch;
+  }
+  h1 {
+    text-align: center;
+  }
+  button {
+    
+    box-sizing: border-box;
+    order: 2;
+    background-color: blueviolet;
+    color: beige;
+    border-radius: 8px;
+  }
+  button:hover {
+    background-color: rgb(173, 57, 57);
+  }
+  div.container {
+    margin: 3rem auto;
+    font-size: 1.75rem;
+    padding: 0;
+  }
+  ol {
+    box-sizing: border-box;
+    margin: 3rem auto;
+    font-size: 1.75rem;
+    padding: 0;
+
+  
+  }
+  
+  ol li {
+    margin: 1.2rem 0;
+    background-color: blueviolet;
+    border-radius: 5px;
+  }
+  
