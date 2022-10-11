@@ -7,9 +7,11 @@ main {
   h1 {
     text-align: center;
   }
-  button {
+  button.start-button {
     
     box-sizing: border-box;
+    height: 25px;
+    width: 80px;
     order: 2;
     background-color: blueviolet;
     color: beige;
@@ -18,12 +20,45 @@ main {
   button:hover {
     background-color: rgb(173, 57, 57);
   }
-  div.container {
+  button.submit-button {
+    
+    box-sizing: border-box;
+    height: 25px;
+    width: 80px;
+    order: 2;
+    background-color: blueviolet;
+    color: beige;
+    border-radius: 8px;
+  }
+  button.back-button {
+    
+    box-sizing: border-box;
+    height: 25px;
+    width: 80px;
+    order: 2;
+    background-color: blueviolet;
+    color: beige;
+    border-radius: 8px;
+  }
+  button.clear-button {
+    
+    box-sizing: border-box;
+    height: 25px;
+    width: 80px;
+    order: 2;
+    background-color: blueviolet;
+    color: beige;
+    border-radius: 8px;
+  }
+  #container {
+    visibility: hidden;
+    text-align: center;
     margin: 3rem auto;
     font-size: 1.75rem;
     padding: 0;
   }
   ol {
+    text-align: center;
     box-sizing: border-box;
     margin: 3rem auto;
     font-size: 1.75rem;
@@ -32,9 +67,13 @@ main {
   
   }
   
-  ol li {
+  li {
     margin: 1.2rem 0;
     background-color: blueviolet;
     border-radius: 5px;
   }
-  
+  .high-scores {text-align: center;
+    box-sizing: border-box;
+    margin: 3rem auto;
+    font-size: 1.75rem;
+    padding: 0;}
