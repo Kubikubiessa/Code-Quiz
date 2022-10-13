@@ -18,14 +18,34 @@
     <h3 class="instructions" style="text-align:center;">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds.</h3>
     <button class="start-button" style="text-align:center;">Start Quiz</button>
     
-    <div id="container" style="text-align:center;">
-        <ol id="questions"style="text-align:center;">
-            <li id="possible-answers1" li>
-            <li id="possible-answer2" li>
-            <li id="possible-answer3" li>
-            <li id="possible-answer4" li>
-        </ol>
+    <div id="quiz">
+        <div id="container" style="text-align:center;">
+            <p class="question-title" p>
+            <ol class="questions-list"style="text-align:center;">
+                <li id="possible-answer1" li>
+                <li id="possible-answer2" li>
+                <li id="possible-answer3" li>
+                <li id="possible-answer4" li>
+            </ol>
+        </div>
+        <div id="answer-container"></div>
+        
     </div>
+   <form> 
+    <h2 id="all-done"> All done!</h2>
+    <div id="scores-div">
+    <span><b>High scores</b></span>
+    <ol id="all-scores">   
+    </ol>
+    </div>
+    <h3 id="final-score"></h3>
+    <input type="text" name="name" id="initials-input" placeholder="enter initials" />
+    <button class="submit-button">Submit</button>
+</form>
+
+
+
+       
     
     </main>
 
