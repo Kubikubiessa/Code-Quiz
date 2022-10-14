@@ -1,19 +1,8 @@
-/* Coding Quiz:
-GIVEN I am taking a code quiz
-WHEN I click the start button:
-(needed: eventListener: click event) -- timer starts and I am presented with a question and a set of multiple-choice answers: (needed: timer-intervals)
+//Coding Quiz:
 
-WHEN I answer a question 
-THEN I am presented with another question (eventlistener click event; if statement about correct or incorrect answer, )
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock (need: way to add time [10 seconds] to the countdown)
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score*/
-// Selects element by class
+// Selects element by class and id in order to target html code and create the dynamics of the game.
 var startGame = document.querySelector(".start-button");
-var gameInstructions = document.querySelector(".instructions")
+var gameInstructions = document.querySelector(".instructions");
 var timeEl = document.querySelector(".time");
 var quizContainer = document.querySelector("#container");
 var answerContainer = document.querySelector("#answer-container");
@@ -21,15 +10,17 @@ var score = document.getElementById("score");
 var formEl = document.querySelector("form");
 var h3El = document.querySelector("#final-score");
 var h2El = document.querySelector("#all-done");
-//var inputEl = document.querySelector("#initials-input");
 var buttonEl = document.querySelector(".submit-button");
 var allScores = document.getElementById("all-scores");
 var initialsEl = document.getElementById("initials-input");
-
-// Selects element
+var scoresDivEl = document.getElementById("scores-div");
+var backButtonEl = document.getElementById("back-button");
+var clearButtonEl = document.getElementById("clear-button");
+var timeInterval;
 var mainEl = document.querySelector("main");
+//important global variables
 var nextMoveIndex = 1;
-var timeLeft = 15;
+var timeLeft = 70;
 var gameScores = [];
 
 //Array of all questions and answers
@@ -93,46 +84,38 @@ startGame.addEventListener("click", function questionsLayout() {
   document.getElementById("container").style.visibility = "visible";
   startGame.setAttribute("style", "display: none");
   gameInstructions.setAttribute("style", "display: none");
-
 });
-  
+
 startGame.addEventListener("click", function () {
   countdown();
   showQuestions(questions[0]);
 });
 
-//TIMER
-//document.getElementById("container").innerHTML += questions[0]; //[questions.length-1];
+//TIMER 
 function countdown() {
   //running the timer
-  var timeInterval = setInterval(function () {
-     // Display time and decrease by second
-     timeEl.textContent = timeLeft;
-     timeLeft--;
+  timeInterval = setInterval(function () {
+    // Display time and decrease by second
+    timeEl.textContent = timeLeft;
+    timeLeft--;
 
-
-     // Once the timer hits zero, game is ended
-     if (timeLeft <= 0) {
-         clearInterval(timeInterval);
-         timeEl.textContent = "0";
-         quizContainer.innerHTML = " ";
-         nextMoveIndex = 0;
-         quizContainer.setAttribute("display", "none");
-         //startGame.setAttribute("style", "display: block;");
-         h3El.textContent = "Your final score is:  " + timeLeft;
-          
-     } 
-     // Stop timer when user finished all the questions and end game
-     else if (nextMoveIndex === 5) {
-         clearInterval(timeInterval);
-         // Reset stats so user can start a new game
-         questionNumber = 0;
-         displayMessage();
-          
-     }
-
- }, 1000);
-} 
+    // Once the timer hits zero, game is ended
+    if (timeLeft <= 0) {
+      clearInterval(timeInterval);
+      timeEl.textContent = "0";
+      quizContainer.innerHTML = " ";
+      nextMoveIndex = 0;
+      quizContainer.setAttribute("display", "none");
+      //startGame.setAttribute("style", "display: block;");
+      h3El.textContent = "Your final score is:  " + timeLeft;
+    }
+    // Stop timer when user finished all the questions and end game.
+    else if (nextMoveIndex === 6) {
+      clearInterval(timeInterval);
+      // Reset stats so user can start a new game
+    }
+  }, 1000);
+}
 //traverse the dom to target needed question elements to display, match questions and answers and append.
 function showQuestions(currentQuestion) {
   var questionEl = document.querySelector(".question-title");
@@ -156,13 +139,15 @@ function showQuestions(currentQuestion) {
   quizContainer.append(answersEl);
 }
 
-//adding the moving from one question to the next until the end of the quiz, including correct and incorrect answer events
+//adding the moving from one question to the next until the end of the quiz, including correct and incorrect answer events.
 quizContainer.addEventListener("click", function (event) {
-  if (nextMoveIndex === 6 && timeLeft > 1) {
+  if (nextMoveIndex === 5 && timeLeft > 1) {
     answerContainer.textContent = "FINISHED!";
-    clearInterval();
+    clearInterval(timeInterval);
     h3El.textContent = timeLeft;
-    //score.textContent = timeLeft;
+    questionNumber = 0;
+    displayMessage();
+    
   } else if (
     event.target.textContent !== questions[nextMoveIndex - 1].correctAnswer
   ) {
@@ -175,85 +160,81 @@ quizContainer.addEventListener("click", function (event) {
     showQuestions(questions[nextMoveIndex - 1]);
   }
 });
- 
+//showing final page: input form and final score.
 function displayMessage() {
   quizContainer.style.visibility = "hidden";
   formEl.style.visibility = "visible";
   h3El.style.visibility = "visible";
   h3El.textContent = "Your final score is:  " + timeLeft;
-  
 }
 
-
-
- 
+//showing final stage with high scores list.
 buttonEl.addEventListener("click", function displayFinalPage() {
-  mainEl.textContent = " ";
-  allScores.style.visibility = "visible"
-  //var h2El = document.createElement("h2");
-  //h2El.textContent = "High scores";
-  //var highScoreListEl = document.createElement("ul");
-  //highScoreListEl.classList.add("high-scores");
-  var backButtonEl = document.createElement("button");
-  backButtonEl.textContent = "Go Back";
-  backButtonEl.classList.add("back-button");
-  var clearButtonEl = document.createElement("button");
-  clearButtonEl.textContent = "Clear";
-  clearButtonEl.classList.add("clear-button");
+  allScores.style.visibility = "visible";
+  scoresDivEl.style.visibility = "visible";
+  formEl.style.visibility = "hidden";
 
+   
   mainEl.appendChild(h2El);
-  //mainEl.appendChild(highScoreListEl);
-  mainEl.appendChild(backButtonEl);
-  mainEl.appendChild(clearButtonEl);
+});
 
-
-  backButtonEl.addEventListener("click", showQuestions())
-  {
-    document.getElementById("container").style.visibility = "visible";
-
-  backButtonEl.addEventListener("click", countdown());
-}})
-var initials = document.getElementById('initials-input');
+//enter initials and score to shore score.
+var initials = document.getElementById("initials-input");
 buttonEl.addEventListener("click", function (event) {
-event.preventDefault();
+  event.preventDefault();
 
-        console.log(initials)    
-const results = {
+  console.log(initials);
+  const results = {
+    initials: initials.value.trim(),
+    score: timeLeft,
+  };
+  gameScores.push(results);
+  console.log(gameScores);
 
-  initials: initials.value.trim(),
-  score: timeLeft
-}
-gameScores.push(results);
-console.log(gameScores)
-  // gameScores();
-  setTimeout(()=>
-renderGameScores(), 2000)
-
-})
+  setTimeout(() => renderGameScores(), 2000);
+  event.stopPropagation();
+});
 //add high scores in list
-// var allScores = document.querySelector("#all-scores");
+
 function renderGameScores() {
-  for (let i = 0; i < gameScores.length; i++){
-  console.log(gameScores[i]);
-  var highScore = document.createElement("li");
-  // console.log(gameScores[i], 'got here')
-  highScore.innerHTML = gameScores[i].initials + " " + gameScores[i].score;
-   allScores.style.visibility = "visible";
-  allScores.appendChild(highScore);
-  console.log(allScores)
+  for (let i = 0; i < gameScores.length; i++) {
+    storeResults();
+    var highScore = document.createElement("li");
+    highScore.innerHTML = gameScores[i].initials + " " + gameScores[i].score;
+    allScores.style.visibility = "visible";
+    allScores.appendChild(highScore);
+    console.log(allScores);
   }
 }
 
+  
+
+// save scores to localStorage (using web API).
 function storeResults() {
   console.log(gameScores);
   localStorage.setItem("games", JSON.stringify(gameScores));
 }
 
+//display localStorage on final game page.
 function pickUp() {
   var storeResults = JSON.parse(localStorage.getItem("games"));
   if (storeResults !== null) {
     gameScores = storeResults;
-  }
+    return;
+  } 
+  
 }
-pickUp();
 
+
+//start a new game using the go-back button.
+backButtonEl.addEventListener("click", function () {
+  location.reload();
+});
+//clear high scores using the the clear-button.
+clearButtonEl.addEventListener("click", function (event) {
+  console.log("CLEAR");
+  localStorage.removeItem("games");
+  allScores.replaceChildren();
+});
+//calling the function to add the stored high scores to the webpage.
+pickUp();
