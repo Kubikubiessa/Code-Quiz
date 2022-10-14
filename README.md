@@ -29,13 +29,13 @@ WHEN the game is over
 THEN I can save my initials and score
 
 ## Mockup
-![Quiz Screenshot1] (./assets/CodeQuiz1.png)
-![Quiz Screenshot2] (./assets/CodeQuiz2.png)
-![Quiz Screenshot2.5] (./assets/CodeQuiz2.5.png)
-![Quiz Screenshot3] (./assets/CodeQuiz3.png)
-![Quiz Screenshot4] (./assets/CodeQuiz4.png)
-![Quiz Screenshot5] (./assets/CodeQuiz5.png)
-![Quiz Screenshot6] (./assets/CodeQuiz6.png)
+![Quiz Screenshot1] (./Assets/CodeQuiz1.png)
+![Quiz Screenshot2] (./Assets/CodeQuiz2.png)
+![Quiz Screenshot2.5] (./Assets/CodeQuiz2.5.png)
+![Quiz Screenshot3] (./Assets/CodeQuiz3.png)
+![Quiz Screenshot4] (./Assets/CodeQuiz4.png)
+![Quiz Screenshot5] (./Assets/CodeQuiz5.png)
+![Quiz Screenshot6] (./Assets/CodeQuiz6.png)
 
 ## Usage
 It can be used for practicing a typical coding assessment as part of a job interview. 
