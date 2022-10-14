@@ -36,7 +36,9 @@ THEN I can save my initials and score
 ![Quiz Screenshot4] (./assets/CodeQuiz4.png)
 ![Quiz Screenshot5] (./assets/CodeQuiz5.png)
 ![Quiz Screenshot6] (./assets/CodeQuiz6.png)
+
 ## Usage
+It can be used for practicing a typical coding assessment as part of a job interview. 
 
 ## Installation
 N/A
